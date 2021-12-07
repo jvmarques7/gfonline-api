@@ -1,0 +1,227 @@
+await queryRunner.createTable(
+            new Table({
+                name:"categoria",
+                columns: [
+                    {
+                        name: "id",
+                        type: "integer",
+                        isPrimary: true
+                    },
+                    {
+                        name: "categoria",
+                        type: "varchar"
+                    },
+                    {
+                        name:"created_at",
+                        type:"timestamp",
+                        default:"now()"
+                    },
+                    {
+                        name:"updated_at",
+                        type:"timestamp",
+                        default:"now()"
+                    }
+                ]
+            })
+        )
+
+await queryRunner.dropTable("categoria");
+
+
+
+
+
+
+await queryRunner.createTable(
+            new Table({
+                name:"modalidade",
+                columns: [
+                    {
+                        name: "id",
+                        type: "integer",
+                        isPrimary: true                       
+                    },
+                    {
+                        name: "modalidade",
+                        type: "varchar"
+                    },
+                    {
+                        name:"created_at",
+                        type:"timestamp",
+                        default:"now()"
+                    },
+                    {
+                        name:"updated_at",
+                        type:"timestamp",
+                        default:"now()"
+                    }
+                ]
+            })
+        )
+        await queryRunner.dropTable("modalidade");
+
+
+        
+
+
+await queryRunner.createTable(
+            new Table({
+                name:"endereco",
+                columns:[
+                    {
+                        name: "id",
+                        type: "varchar",
+                        isPrimary: true,
+                        generationStrategy: "uuid"
+                    },
+                    {
+                        name: "cep",
+                        type: "varchar"
+                    },
+                    {
+                        name: "logradouro",
+                        type: "varchar"
+                    },
+                    {
+                        name: "complemento",
+                        type: "varchar"
+                    },
+                    {
+                        name: "bairro",
+                        type: "varchar"
+                    },
+                    {
+                        name: "numero",
+                        type: "integer"
+                    },
+                    {
+                        name:"created_at",
+                        type:"timestamp",
+                        default:"now()"
+                    },
+                    {
+                        name:"updated_at",
+                        type:"timestamp",
+                        default:"now()"
+                    },
+                    {
+                        name: "user_id",
+                        type: "varchar"
+                    },
+                ],
+                foreignKeys: [
+                    {
+                        name: "FKUsers",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_id"],
+                        onDelete: "RESTRICT",
+                        onUpdate: "CASCADE"
+                    },                
+                ]
+            })
+        );
+
+await queryRunner.dropTable("endereco");
+
+
+
+
+
+
+await queryRunner.createTable(
+            new Table({
+                name:"users",
+                columns:[
+                    {
+                        name: "id",
+                        type: "varchar",
+                        isPrimary: true,
+                        generationStrategy: "uuid"
+                    },
+                    {
+                        name: "nomeCompleto",
+                        type: "varchar"
+                    },
+                    {
+                        name: "rg",
+                        type: "varchar"
+                    },
+                    {
+                        name: "cpf",
+                        type: "varchar"
+                    },
+                    {
+                        name: "nacionalidade",
+                        type: "varchar"
+                    },
+                    {
+                        name: "dt_nascimento",
+                        type: "timestamp"
+                    },
+                    {
+                        name: "email",
+                        type: "varchar"
+                    },
+                    {
+                        name: "password",
+                        type: "varchar",
+                        isNullable: false
+                    },
+                    {
+                        name: "sexo",
+                        type: "varchar"
+                    },
+                    {
+                        name: "modalidade_id",
+                        type: "integer"
+                    },
+                    {
+                        name: "categoria_id",
+                        type: "integer"
+                    },
+                    {
+                        name: "endereco_id",
+                        type: "integer"
+                    }
+                    {
+                        name:"created_at",
+                        type:"timestamp",
+                        default:"now()"
+                    },
+                    {
+                        name:"updated_at",
+                        type:"timestamp",
+                        default:"now()"
+                    }
+                ],
+                foreignKeys: [
+                    {
+                        name: "FKModalidade",
+                        referencedTableName: "modalidade",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["modalidade_id"],
+                        onDelete: "RESTRICT",
+                        onUpdate: "CASCADE"
+                    },
+                    {
+                        name: "FKCategoria",
+                        referencedTableName: "categoria",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["categoria_id"],
+                        onDelete: "RESTRICT",
+                        onUpdate: "CASCADE"
+                    },
+                    {
+                        name: "FKEndereco",
+                        referencedTableName: "endereco",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["endereco_id"],
+                        onDelete: "RESTRICT",
+                        onUpdate: "CASCADE"
+                    }                        
+                ]
+            })
+        );
+
+        await queryRunner.dropTable("users");
