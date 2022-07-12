@@ -7,30 +7,26 @@
     "dev": "ts-node-dev src/servers.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
-  "devDependencies": {
-    "@types/express": "^4.17.13",
-    "@types/jsonwebtoken": "^8.5.4",
-    "@types/uuid": "^8.3.1",
-    "cli": "^1.0.1",
-    "express": "^4.17.1",
-    "ts-node": "^10.0.0",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.3.5"
-  },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.4",
+    "@types/uuid": "^8.3.1",
     "bcryptjs": "^2.4.3",
     "cep-promise": "^4.1.1",
+    "cli": "^1.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "git": "^0.1.5",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5",
     "typeorm": "^0.2.41",
     "uuid": "^8.3.2"
   }
